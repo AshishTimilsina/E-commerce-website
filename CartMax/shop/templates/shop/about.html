@@ -1,0 +1,81 @@
+{% extends 'shop/basic.html' %}
+
+{% block title%} About-CartMax{% endblock %}
+{% block body %}
+<main role="main">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">CartMax -1 step away to you</h1>
+      <p>CartMax is a Nepali multinational technology company which focuses on e-commerce or Online Shopping. It has been referred to as "one of the most influential economic and cultural forces in Nepal",and is one of the Nepal most valuable brands.It is one of the Big Five Nepal companies, alongside Alphabet, Apple, Meta, and Microsoft.
+          CartMax was founded by<b> Ashish Timilsina</b>  from his garage in Kathmandu,Nepal,on September 17, 2002. Initially an online marketplace for books, it has expanded into a multitude of product categories: a strategy that has earned it the moniker The Everything Store.It has multiple subsidiaries including Amazon Web Services (cloud computing), Zoox (autonomous vehicles), Kuiper Systems (satellite Internet), CartMax Lab126 (computer hardware R&D). Its other subsidiaries include Ring, Twitch, IMDb, and Whole Foods Market. Its acquisition of Whole Foods in August 2017 for US$13.4 billion substantially increased its footprint as a physical retailer</p>
+
+      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-4">
+        <h2><b>Our Values</b></h2><br>
+        <h3>- Make it personal</h3>
+        <p>We live to create a memorable and personalized experience that inspires people’s uniqueness.</p><br>
+        <h4>- Deliver on our promise</h4>
+        <p>If we say we are going to do something, we do it. We can always be counted on.</p>
+
+      </div>
+      <div class="col-md-4">
+        <h2>Our Team</h2>
+        <p>We firmly believe that our markets are at an inflection point in South Asia's digital economy, offering huge growth opportunities. With our localized go-to-market approach, innovative technology solutions, and digitalized logistics network, we believe we can help unlock the economic potential of each market we operate across. </p>
+
+      </div>
+      <div class="col-md-4">
+        <h2>What We Do</h2>
+        <p>CartMax was established to achieve two goals -
+allow SMEs to grow their business online, while creating an immersive and personalized shopping experience for customers.Our marketplace provides 40 million monthly active users access to 50 million products across 100 categories.
+As part of our commitment to providing customers with access to the best range of products and services, we work with over 100,000 sellers, helping both brands and SMEs to grow their business through our platform and services.
+        </p>
+
+      </div>
+    </div>
+
+    <hr>
+
+  </div> <!-- /container -->
+
+</main>
+{% endblock %}
+
+{% block js %}
+<script>
+console.log('working');
+if(localStorage.getItem('cart') == null){
+var cart = {};
+}
+else
+{
+cart = JSON.parse(localStorage.getItem('cart'));
+document.getElementById('cart').innerHTML = Object.keys(cart).length;
+}
+$('.cart').click(function(){
+console.log('clicked');
+var idstr = this.id.toString();
+console.log(idstr);
+if (cart[idstr] !=undefined){
+cart[idstr] = cart[idstr] + 1;
+}
+else
+{
+cart[idstr] = 1;
+}
+console.log(cart);
+localStorage.setItem('cart', JSON.stringify(cart));
+document.getElementById('cart').innerHTML = Object.keys(cart).length;
+});
+$('#popcart').popover();
+document.getElementById("popcart").setAttribute('data-content', '<h5>Cart for your items in CartMax</h5>');
+</script>
+{% endblock %}
+

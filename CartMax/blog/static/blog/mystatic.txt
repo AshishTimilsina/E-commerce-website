@@ -1,0 +1,1 @@
+I am inside blog->static->blog->mystatic.txt
